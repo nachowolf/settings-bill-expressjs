@@ -18,15 +18,21 @@
 
           <div class="six columns">
             <h5>Bill type</h5>
+            <form class="" action="/action" method="post">
+
             <label class="">
-              <input type="radio" name="billItemTypeWithSettings" class="billItemTypeWithSettings">
+
+              <input type="radio" name="billItemTypeWithSettings" value="call" class="billItemTypeWithSettings">
               <span class="label-body">Call</span>
             </label>
+
             <label class="">
-              <input type="radio" name="billItemTypeWithSettings" class="billItemTypeWithSettings">
+              <input type="radio" name="billItemTypeWithSettings" value="sms" class="billItemTypeWithSettings">
               <span class="label-body" >SMS</span>
             </label>
-            <button class="button-primary" type="button" name="button">Add</button>
+
+            <button class="button-primary" type="submit" name="button">Add</button>
+          </form>
 
             <h5>Totals</h5>
                 <table>
@@ -53,11 +59,20 @@
           </div>
           <div class="six columns">
             <h5>Settings</h5>
-            <form class="" action="/settings" method="post">
+            <form class="price" action="/settings" method="post">
+
+              <h5>Sms setting</h5>
           <input type="text" name="smsCost" placeholder="enter sms cost">
+
+          <h5>Call setting</h5>
           <input type="text" name="callCost" placeholder="enter call cost">
+
+          <h5>Warning setting</h5>
           <input type="text" name="warningLevel" placeholder="enter warning level">
+
+          <h5>Critical setting</h5>
           <input type="text" name="criticalLevel" placeholder="enter critical level">
+
           <input type="submit">
       </form>
 
@@ -66,9 +81,10 @@
       </div>
     </div>
   </div>
-  <script src="js/calculate-bill.js" charset="utf-8"></script>
+  <!-- <script src="js/calculate-bill.js" charset="utf-8"></script>
   <script src="js/text-bill.js" charset="utf-8"></script>
   <script src="js/radio-bill.js" charset="utf-8"></script>
-  <script src="js/settings-bill.js" charset="utf-8"></script>
+  <script src="js/settings-bill-factory.js" charset="utf-8"></script>
+
 
 </body>

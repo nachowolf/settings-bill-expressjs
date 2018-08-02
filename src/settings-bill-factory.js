@@ -60,14 +60,14 @@ var settingTotal = function(){
 
 
 return{
-  call : settingCall,
-  sms : settingSms,
-  warning : settingWarning,
-  critical : settingCritical,
-  callTotal : callTotal,
-  smsTotal : smsTotal,
-  total : settingTotal,
-  settingsAdd : settingsBill
+  settingCall,
+  settingSms,
+  settingWarning,
+  settingCritical,
+  callTotal,
+  smsTotal,
+  settingTotal,
+  settingsBill
 };
 
 };
