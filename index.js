@@ -36,15 +36,22 @@ console.log(callCost);
 console.log(warningLevel);
 console.log(criticalLevel);
 
+
   var settings = {
     smsCost,
     callCost,
     warningLevel,
     criticalLevel
-  };
+  }
+
+  var setSms = factory.settingSms(smsCost);
+  var setCall = factory.settingCall(callCost);
+  var setWarn = factory.settingWarning(warningLevel);
+  var setCrit = factory.settingCritical(criticalLevel);
+
 
   // process data
-  globalSettings = settings;
+  // globalSettings = settings;
 
   // note that data can be sent to the template
   res.render("home");
@@ -52,35 +59,27 @@ console.log(criticalLevel);
 });
 
 app.post('/action', function(req, res){
-    let addCallOrSms = req.body.billItemTypeWithSettings;
+    let added = req.body.billItemTypeWithSettings;
 
-    console.log(addCallOrSms)
-    var total = factory.settingsBill(addCallOrSms);
-console.log(total);
-    // process data
-    globalSettings = action
+    // console.log(added)
+    let incrementor = factory.settingsBill(added);
+//     var total = factory.settingTotal();
+//     var callsTotal = factory.callTotal()
+//     var smssTotal = factory.smsTotal()
+//     console.log("call: " + callsTotal);
+//     console.log("sms: " + smssTotal);
+// console.log("total: " + total);
 
+let result = {
+  callCost: factory.callTotal(),
+  smsCost: factory.smsTotal(),
+  totalCost: factory.settingTotal(),
+}
     // note that data can be sent to the template
-    res.render('home', {action})
+    res.render('home')
 });
 
-// app.get('/settings/:costType', function(){
-//     let costType = req.params.costType;
-//     console.log(costType)
-//
-//     let cost = 0;
-//     //lookup cost for costType
-//     if (costType === 'sms'){
-//         cost = settings.smsCost;
-//     } else if (costType === 'call') {
-//         cost = settings.callCost;
-//     }
-//
-//     req.render('cost', {
-//         costType,
-//         cost
-//     });
-// });
+
 
 let PORT = process.env.PORT || 3007;
 

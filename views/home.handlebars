@@ -20,16 +20,16 @@
             <h5>Bill type</h5>
             <form class="" action="/action" method="post">
 
-            <label class="">
+              <label class="">
+                <input type="radio" name="billItemTypeWithSettings" value="sms" class="billItemTypeWithSettings">
+                <span class="label-body" >SMS</span>
+              </label>
 
+            <label class="">
               <input type="radio" name="billItemTypeWithSettings" value="call" class="billItemTypeWithSettings">
               <span class="label-body">Call</span>
             </label>
 
-            <label class="">
-              <input type="radio" name="billItemTypeWithSettings" value="sms" class="billItemTypeWithSettings">
-              <span class="label-body" >SMS</span>
-            </label>
 
             <button class="button-primary" type="submit" name="button">Add</button>
           </form>
@@ -40,19 +40,19 @@
                     <td>
                       <a href="/actions/calls">Call total</a>
                     </td>
-                    <td>R<span class="callTotalSettings">34.00</span> </td>
+                    <td>R<span class="callTotalSettings"> {{result.totalCost}} </span> </td>
                   </tr>
                   <tr>
                     <td>
                       <a href="/actions/sms">SMS total</a>
                     </td>
-                    <td>R<span class="smsTotalSettings">7.35</span> </td>
+                    <td>R<span class="smsTotalSettings">{{result.smsCost}}</span> </td>
                   </tr>
                   <tr>
                     <td>
                       <a href="/actions">Total</a>
                     </td>
-                    <td> R<span class="totalSettings">41.35</span> </td>
+                    <td> R<span class="totalSettings">{{result.totalCost}}</span> </td>
                   </tr>
                 </table>
 

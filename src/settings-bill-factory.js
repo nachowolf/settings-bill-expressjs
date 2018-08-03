@@ -1,4 +1,5 @@
 module.exports = function(){
+
   var callSetting = 0;
   var smsSetting = 0;
   var warningSetting = 0;
@@ -36,11 +37,14 @@ var settingCritical = function(input){
 };
 
 var settingsBill = function(input){
+
   if (input === "call"){
       callSettingTotal += callSetting;
+      return
   }
   else if (input === "sms"){
       smsSettingTotal += smsSetting;
+      return
   }
 };
 
