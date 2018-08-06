@@ -40,19 +40,19 @@
                     <td>
                       <a href="/actions/calls">Call total</a>
                     </td>
-                    <td>R<span class="callTotalSettings"> {{result.totalCost}} </span> </td>
+                    <td>R<span class="callTotalSettings"> {{callTotal}} </span> </td>
                   </tr>
                   <tr>
                     <td>
                       <a href="/actions/sms">SMS total</a>
                     </td>
-                    <td>R<span class="smsTotalSettings">{{result.smsCost}}</span> </td>
+                    <td>R<span class="smsTotalSettings">{{smsTotal}} </span> </td>
                   </tr>
                   <tr>
                     <td>
                       <a href="/actions">Total</a>
                     </td>
-                    <td> R<span class="totalSettings">{{result.totalCost}}</span> </td>
+                    <td> R<span class="totalSettings">{{total}}</span> </td>
                   </tr>
                 </table>
 
@@ -62,16 +62,16 @@
             <form class="price" action="/settings" method="post">
 
               <h5>Sms setting</h5>
-          <input type="text" name="smsCost" placeholder="enter sms cost">
+          <input type="text" name="smsCost" placeholder="enter sms cost" value="{{smsCost}}">
 
           <h5>Call setting</h5>
-          <input type="text" name="callCost" placeholder="enter call cost">
+          <input type="text" name="callCost" placeholder="enter call cost" value="{{callCost}}">
 
           <h5>Warning setting</h5>
-          <input type="text" name="warningLevel" placeholder="enter warning level">
+          <input type="text" name="warningLevel" placeholder="enter warning level" value="{{warningLevel}}">
 
           <h5>Critical setting</h5>
-          <input type="text" name="criticalLevel" placeholder="enter critical level">
+          <input type="text" name="criticalLevel" placeholder="enter critical level" value="{{criticalLevel}}">
 
           <input type="submit">
       </form>

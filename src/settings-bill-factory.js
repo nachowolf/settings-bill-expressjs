@@ -49,7 +49,8 @@ var settingsBill = function(input){
 };
 
 var callTotal = function(){
-  return callSettingTotal.toFixed(2);
+   return callSettingTotal.toFixed(2);
+  
 };
 
 var smsTotal = function(){
