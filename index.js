@@ -88,7 +88,14 @@ app.post('/action', function(req, res){
 
 
 app.get("/actions", function(req, res){
-  res.render("actions", {actions: settingsBill.action()})
+  res.render("actions", {actions: factory.actions()})
+
+})
+
+app.get("/actions/:type", function(req, res){
+  const actionType = req.param.type
+  res.render("actions", {actions: factory.actionFor(actionType)})
+  
 })
 
 

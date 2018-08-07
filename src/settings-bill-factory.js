@@ -8,6 +8,11 @@ module.exports = function(){
   var callSettingTotal = 0;
   var smsSettingTotal = 0;
 
+  var inType;
+
+  var actionList = []
+    
+
   var settingCall = function(input){
      if(parseFloat(input) < 0 || parseFloat(input) > 0){
      callSetting = parseFloat(input);
@@ -37,16 +42,41 @@ var settingCritical = function(input){
 };
 
 var settingsBill = function(input){
+   
+    let cost = 0
 
   if (input === "call"){
       callSettingTotal += callSetting;
-      return
+      cost = callSetting;
+      
   }
   else if (input === "sms"){
       smsSettingTotal += smsSetting;
-      return
+      cost = smsSetting;
+      
   }
+
+
+actionList.push(
+  {
+  "type": input,
+  "price": "R" + cost.toFixed(2),
+  "timeStamp": new Date(),
+  
+});
+
+
+
 };
+
+ function actions(){
+  return actionList;
+};
+
+function actionFor(actionType){
+  return actionList.filter(i => actionType === actionList.type) 
+ };
+
 
 var callTotal = function(){
    return callSettingTotal.toFixed(2);
@@ -65,6 +95,8 @@ var settingTotal = function(){
 
 
 return{
+  actionFor,
+  actions,
   settingCall,
   settingSms,
   settingWarning,
