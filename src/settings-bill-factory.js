@@ -1,110 +1,114 @@
-module.exports = function(){
 
-  var callSetting = 0;
-  var smsSetting = 0;
-  var warningSetting = 0;
-  var criticalSetting = 0;
 
-  var callSettingTotal = 0;
-  var smsSettingTotal = 0;
+module.exports = function () {
+  var callSetting = 0
+  var smsSetting = 0
+  var warningSetting = 0
+  var criticalSetting = 0
 
-  var inType;
+  var callSettingTotal = 0
+  var smsSettingTotal = 0
+
+
 
   var actionList = []
-    
 
-  var settingCall = function(input){
-     if(parseFloat(input) < 0 || parseFloat(input) > 0){
-     callSetting = parseFloat(input);
-   }
-   return callSetting;
- };
 
-  var settingSms = function(input){
+  var settingCall = function (input) {
     if (parseFloat(input) < 0 || parseFloat(input) > 0) {
-      smsSetting = parseFloat(input);
+      callSetting = parseFloat(input)
     }
-    return smsSetting;
+    return callSetting
   };
 
-var settingWarning = function(input){
-  if (parseFloat(input) < 0 || parseFloat(input) > 0) {
-  warningSetting = parseFloat(input);
-}
-  return warningSetting;
-};
+  var settingSms = function (input) {
+    if (parseFloat(input) < 0 || parseFloat(input) > 0) {
+      smsSetting = parseFloat(input)
+    }
+    return smsSetting
+  };
 
-var settingCritical = function(input){
-  if (parseFloat(input) < 0 || parseFloat(input) > 0) {
-  criticalSetting = parseFloat(input);
-}
-  return criticalSetting;
-};
+  var settingWarning = function (input) {
+    if (parseFloat(input) < 0 || parseFloat(input) > 0) {
+      warningSetting = parseFloat(input)
+    }
+    return warningSetting
+  };
 
-var settingsBill = function(input){
-   
+  var settingCritical = function (input) {
+    if (parseFloat(input) < 0 || parseFloat(input) > 0) {
+      criticalSetting = parseFloat(input)
+    }
+    return criticalSetting
+  };
+
+  var settingsBill = function (input) {
     let cost = 0
 
-  if (input === "call"){
-      callSettingTotal += callSetting;
-      cost = callSetting;
-      
+    if (input === 'call') {
+      callSettingTotal += callSetting
+      cost = callSetting
+
+    } else if (input === 'sms') {
+      smsSettingTotal += smsSetting
+      cost = smsSetting
+    } else {
+      return settingsBill
+    }
+
+    actionList.push({
+      'type': input,
+      'price': 'R' + cost.toFixed(2),
+      'date': new Date()
+
+    })
+
+
+
+  };
+
+  function actions() {
+    return actionList
+  };
+
+  function actionFor(actionType) {
+    console.log(actionType)
+
+    if (actionType == " " || actionType == undefined) {
+      return actionType
+    } else {
+
+      return actionList.filter(list => list.type === actionType)
+
+    };
   }
-  else if (input === "sms"){
-      smsSettingTotal += smsSetting;
-      cost = smsSetting;
-      
+
+  var callTotal = function () {
+    return callSettingTotal.toFixed(2)
+
+  };
+
+  var smsTotal = function () {
+    return smsSettingTotal.toFixed(2)
+  };
+
+  var settingTotal = function () {
+    var total = callSettingTotal + smsSettingTotal
+    return total.toFixed(2)
+
+  };
+
+  return {
+    actionFor,
+    actions,
+    settingCall,
+    settingSms,
+    settingWarning,
+    settingCritical,
+    callTotal,
+    smsTotal,
+    settingTotal,
+    settingsBill
   }
-
-
-actionList.push(
-  {
-  "type": input,
-  "price": "R" + cost.toFixed(2),
-  "timeStamp": new Date(),
-  
-});
-
-
-
-};
-
- function actions(){
-  return actionList;
-};
-
-function actionFor(actionType){
-  return actionList.filter(i => actionType === actionList.type) 
- };
-
-
-var callTotal = function(){
-   return callSettingTotal.toFixed(2);
-  
-};
-
-var smsTotal = function(){
-  return smsSettingTotal.toFixed(2);
-};
-
-var settingTotal = function(){
-  var total = callSettingTotal + smsSettingTotal;
-  return total.toFixed(2);
-
-};
-
-
-return{
-  actionFor,
-  actions,
-  settingCall,
-  settingSms,
-  settingWarning,
-  settingCritical,
-  callTotal,
-  smsTotal,
-  settingTotal,
-  settingsBill
-};
 
 };
