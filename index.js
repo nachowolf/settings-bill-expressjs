@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const exphbs = require('express-handlebars')
-const settingFactory = require('./src/settings-bill-factory')
+const settingFactory = require('./public/src/settings-bill-factory')
 const factory = settingFactory()
 const ejs = require('ejs')
 
