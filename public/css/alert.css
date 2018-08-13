@@ -10,3 +10,12 @@
     opacity: 0.65; 
     cursor: not-allowed;
   }
+
+  .warningReached{
+      border-color: orange;
+      
+  }
+
+  .criticalReached{
+      border-color: red;
+  }

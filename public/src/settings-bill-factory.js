@@ -96,7 +96,12 @@ module.exports = function () {
   };
 
   var settingAlert = function (tot) {
-    if (tot >= criticalSetting && tot >= warningSetting) {
+    
+    if(tot == 0){
+      return tot
+    }
+
+    else if (tot >= criticalSetting && tot >= warningSetting) {
        return "critical"
      }
 
