@@ -22,8 +22,10 @@ var smsCost
 var callCost
 var warningLevel
 var criticalLevel
+var alert
+var buttonStatus
 
-
+console.log(alert)
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
   extended: false
@@ -36,7 +38,7 @@ app.engine('handlebars', exphbs({
     "timeStamp" :
     function(){
       return Moment(this.date).fromNow()
-    }
+    },
   }
 
 }))
@@ -44,13 +46,15 @@ app.set('view engine', 'handlebars')
 
 app.get('/', function (req, res) {
   res.render('home', {
+    alert,
     callTotal,
     smsTotal,
     total,
     smsCost,
     callCost,
     warningLevel,
-    criticalLevel
+    criticalLevel,
+    buttonStatus
   })
 })
 
@@ -70,6 +74,8 @@ app.post('/settings', function (req, res) {
   var setCall = factory.settingCall(callCost)
   var setWarn = factory.settingWarning(warningLevel)
   var setCrit = factory.settingCritical(criticalLevel)
+  alert = factory.settingAlert(total)
+  buttonStatus = factory.buttonStatus(alert)
 
 
   // process data
@@ -91,7 +97,9 @@ app.post('/action', function (req, res) {
   callTotal = factory.callTotal()
   smsTotal = factory.smsTotal()
   total = factory.settingTotal()
-
+  alert = factory.settingAlert(total)
+  buttonStatus = factory.buttonStatus(alert)
+  console.log(buttonStatus)
   // note that data can be sent to the template
   res.redirect('/')
 })

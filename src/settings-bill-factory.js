@@ -1,5 +1,4 @@
 
-
 module.exports = function () {
   var callSetting = 0
   var smsSetting = 0
@@ -9,10 +8,7 @@ module.exports = function () {
   var callSettingTotal = 0
   var smsSettingTotal = 0
 
-
-
   var actionList = []
-
 
   var settingCall = function (input) {
     if (parseFloat(input) < 0 || parseFloat(input) > 0) {
@@ -67,12 +63,12 @@ module.exports = function () {
 
   };
 
-  function actions() {
+  function actions () {
     return actionList
   };
 
   function actionFor(actionType) {
-    console.log(actionType)
+    
 
     if (actionType == " " || actionType == undefined) {
       return actionType
@@ -94,11 +90,42 @@ module.exports = function () {
 
   var settingTotal = function () {
     var total = callSettingTotal + smsSettingTotal
+    
     return total.toFixed(2)
 
   };
 
+  var settingAlert = function (tot) {
+    if (tot >= criticalSetting && tot >= warningSetting) {
+       return "critical"
+     }
+
+    else if(tot >= warningSetting && tot <= criticalSetting) {
+    return "warning"
+  }
+
+    else if (tot <= warningSetting && tot <= criticalSetting){
+    return " "
+  }
+
+  else{
+    return " "
+  }
+}
+
+var buttonStatus = function (input){
+
+  if (input !== "critical") {
+    return " "
+  }
+  else if(input === "critical"){
+    return "disabled"
+  }
+}
+
   return {
+    buttonStatus,
+    settingAlert,
     actionFor,
     actions,
     settingCall,
