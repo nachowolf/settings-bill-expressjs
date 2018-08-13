@@ -2,9 +2,9 @@
   "name": "settings-bill-expressjs",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "test.js",
   "scripts": {
-    "test": "test.js"
+    "test": "mocha"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +14,7 @@
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
+    "mocha": "^5.2.0",
     "moment": "^2.22.2",
     "nodemon": "^1.18.3"
   },
